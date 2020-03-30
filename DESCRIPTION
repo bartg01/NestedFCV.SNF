@@ -1,0 +1,10 @@
+Package: NestedFCV.SNF
+Type: Package
+Title: Optimize Similarity Network Fusion hyper-parameters using nested fold cross-validation
+Version: 0.1.0
+Author: Guillermo Barturen
+Maintainer: Guillermo Barturen <guillermo.barturen@genyo.es>
+Description: 
+License: OLS-3.0
+Encoding: UTF-8
+LazyData: true
