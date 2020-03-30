@@ -93,7 +93,7 @@ ggplot(Plot.OuterValues.Corrected, aes(x=Clusters, y=avg, linetype=type,
 ![Outer FCV results](OuterFCV.png)
 
 ### Cluster validation samples by mean of the discovery model
-Discovery Assignments (using trained parameters)
+Discovery Assignments
 ```
 discovery.data.SNF <- discovery.data
 for (dataset in names(discovery.data.SNF)) {
@@ -106,7 +106,9 @@ for (dataset in names(discovery.data.SNF)) {
 }
 Discovery.SNF <- SNF(discovery.data.SNF,OptK,20)
 Discovery.Clusters <- spectralClustering(Discovery.SNF,OptClusters)
-
+```
+Validation Assignments
+```
 #Validation Assigments with predefined model
 discovery.data.norm <- discovery.data
 validation.data.norm <- validation.data
@@ -118,3 +120,4 @@ for (dataset in names(discovery.data.norm)) {
 clusters <-groupPredict(discovery.data.norm,validation.data.norm,
                         Discovery.Clusters, K=OptK, alpha=OptAlpha, t=20, method=1)
 names(clusters) <- c(rownames(discovery.data.norm),rownames(validation.data.norm))
+```
