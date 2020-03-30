@@ -26,8 +26,9 @@ input.data$Methylome <- methylome.values[,order(colnames(methylome.values))]
 
 ## Running Example
 
-In this example NFCV.SNF is used in a discovery cohort to optimize the hyper-parameters, and the trained model is applied to cluster the samples of a validation cohort.<br/><br/>
-Prepare discovery and validation cohorts:
+In this example NFCV.SNF is used in a discovery cohort to optimize the hyper-parameters, and then the trained model is applied to cluster the samples of a validation cohort.<br/><br/>
+
+###Prepare discovery and validation cohorts:
 ```
 discovery.data <- list()
 validation.data <- list()
@@ -36,3 +37,7 @@ discovery.data$Methylome <- input.data[samples,]
 validation.data$Transcriptome <- input.data[-samples,]
 validation.data$Methylome <- input.data[-samples,]
 ```
+###Running nested fold cross-validation:
+
+
+
