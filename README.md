@@ -65,6 +65,7 @@ ggplot(Plot.InnerValues.Corrected, aes(x=Clusters, y=avg, linetype=type, colour=
         panel.border = element_rect(fill = NA, colour = "black"))
 ```  
 
+![Inner FCV results](InnerFCV.png)
 
 Plot outer FCV results:
 ```
@@ -89,4 +90,5 @@ ggplot(Plot.OuterValues.Corrected, aes(x=Clusters, y=avg, linetype=type,
   theme_bw()
 ```
 
+![Outer FCV results](OuterFCV.png)
 
