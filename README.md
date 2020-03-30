@@ -8,7 +8,7 @@ install.packages(c("SNFtool","ggsci","ggplot2"))
 
 ## Getting Started
 
-install.packages("devtools")
+install.packages("devtools")\n
 devtools::install_github("bartg01/NestedFCV.SNF")
 
 ## Running Example
