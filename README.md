@@ -92,3 +92,29 @@ ggplot(Plot.OuterValues.Corrected, aes(x=Clusters, y=avg, linetype=type,
 
 ![Outer FCV results](OuterFCV.png)
 
+### Cluster validation samples by mean of the discovery model
+Discovery Assignments (using trained parameters)
+```
+discovery.data.SNF <- discovery.data
+for (dataset in names(discovery.data.SNF)) {
+ #Normalization
+ discovery.data.SNF[[dataset]] <- standardNormalization(t(discovery.data.SNF[[dataset]]))
+ #Distance
+ discovery.data.SNF[[dataset]] <- as.matrix(dist(discovery.data.SNF[[dataset]]))
+ #Affinity matrix
+ discovery.data.SNF[[dataset]] <- affinityMatrix(discovery.data.SNF[[dataset]],OptK,OptAlpha)
+}
+Discovery.SNF <- SNF(discovery.data.SNF,OptK,20)
+Discovery.Clusters <- spectralClustering(Discovery.SNF,OptClusters)
+
+#Validation Assigments with predefined model
+discovery.data.norm <- discovery.data
+validation.data.norm <- validation.data
+for (dataset in names(discovery.data.norm)) {
+ #Normalization
+ discovery.data.norm[[dataset]] <- standardNormalization(t(discovery.data.norm[[dataset]]))
+ validation.data.norm[[dataset]] <- standardNormalization(t(validation.data.norm[[dataset]]))
+}
+clusters <-groupPredict(discovery.data.norm,validation.data.norm,
+                        Discovery.Clusters, K=OptK, alpha=OptAlpha, t=20, method=1)
+names(clusters) <- c(rownames(discovery.data.norm),rownames(validation.data.norm))
